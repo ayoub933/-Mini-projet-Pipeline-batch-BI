@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14
+    container_name: pg_pipeline
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pipeline_project
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+
+  adminer:
+    image: adminer
+    container_name: adminer_pipeline
+    restart: always
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
