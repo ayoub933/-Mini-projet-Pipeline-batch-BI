@@ -1,0 +1,32 @@
+name: 'ecommerce_dbt'
+version: '1.0.0'
+
+profile: 'ecommerce_dbt'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  ecommerce_dbt:
+    staging:
+      +schema: staging
+      +materialized: view
+    marts:
+      +materialized: view
+
+seeds:
+  ecommerce_dbt:
+    order_items:
+      +column_types:
+        order_id: text
+        product_id: text
+        price: float
+        quantity: int
