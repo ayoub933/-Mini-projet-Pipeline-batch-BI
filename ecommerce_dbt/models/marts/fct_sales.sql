@@ -1,10 +1,8 @@
 SELECT
-    so.order_id,
-    so.product_id,
-    so.total_price,
-    so.quantity,
-    so.price,
-    o.order_date,
-    o.customer_id
-FROM {{ ref('stg_order_items') }} so
-LEFT JOIN {{ ref('stg_orders') }} o ON o.order_id = so.order_id
+    order_id,
+    product_id,
+    SUM(quantity) AS total_quantity,
+    SUM(total_price) AS total_price,
+    MIN(order_date) AS order_date
+FROM {{ ref('stg_order_items') }}
+GROUP BY order_id, product_id
