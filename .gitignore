@@ -1,0 +1,19 @@
+# DBT/Logs
+logs/
+target/
+.dbt/
+
+# Auth
+auth/*.json
+
+# Python
+__pycache__/
+*.pyc
+
+# VSCode / System
+.vscode/
+.idea/
+.DS_Store
+
+# Données brutes si besoin
+data/Online Retail.xlsx

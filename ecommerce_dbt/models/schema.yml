@@ -32,3 +32,11 @@ models:
       - name: total_price
         tests:
           - not_null
+
+  - name: kpi_sales
+    description: "KPIs globaux calculés pour les dashboards Power BI"
+    columns:
+      - name: ca_moyen_par_commande
+        description: "CA moyen par commande (calculé dans dbt)"
+      - name: ca_moyen_par_client
+        description: "CA moyen par client (calculé dans dbt)"
